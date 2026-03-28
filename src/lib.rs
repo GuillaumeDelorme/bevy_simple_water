@@ -10,6 +10,11 @@ mod systems;
 
 pub use components::Water;
 
+/// Plugin that enables the water material and its embedded shader assets.
+///
+/// Add this once to your app, then spawn entities with [`Water`] and a mesh.
+/// The plugin registers the extended material, embeds the WGSL shader and normal
+/// map, and keeps spawned water entities synchronized with their material data.
 pub struct SimpleWaterPlugin;
 
 impl Plugin for SimpleWaterPlugin {

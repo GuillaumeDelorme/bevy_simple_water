@@ -13,13 +13,13 @@ use crate::material::{WaterExtendedMaterial, WaterExtension, WaterShaderSettings
 
 /// Water surface component.
 ///
-/// Add this alongside a [`Mesh3d`] to create a water surface.
+/// Add this alongside a `Mesh3d` to create a water surface.
 /// The plugin automatically generates and manages the underlying material.
 ///
 /// The water shader uses deferred rendering to animate normal-mapped waves.
 /// Waves use triplanar world-space projection, so the effect does not depend on
 /// the mesh UV unwrap.
-/// Make sure your app uses [`DefaultOpaqueRendererMethod::deferred()`].
+/// Make sure your app uses `DefaultOpaqueRendererMethod::deferred()`.
 ///
 /// # Example
 ///
