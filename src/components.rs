@@ -17,6 +17,8 @@ use crate::material::{WaterExtendedMaterial, WaterExtension, WaterShaderSettings
 /// The plugin automatically generates and manages the underlying material.
 ///
 /// The water shader uses deferred rendering to animate normal-mapped waves.
+/// Waves use triplanar world-space projection, so the effect does not depend on
+/// the mesh UV unwrap.
 /// Make sure your app uses [`DefaultOpaqueRendererMethod::deferred()`].
 ///
 /// # Example
@@ -52,7 +54,8 @@ pub struct Water {
 
     /// Scale (frequency) of each wave octave.
     ///
-    /// Each component controls one octave. Higher values produce tighter, more frequent waves.
+    /// Each component controls one octave. Higher values produce tighter, more frequent waves
+    /// in the shader's world-space projection.
     /// A typical pattern doubles each octave: `Vec4::new(1.0, 2.1, 4.3, 8.4)`.
     pub octave_scales: Vec4,
 
