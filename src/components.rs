@@ -100,17 +100,129 @@ impl Water {
         }
     }
 
-    /// Deep ocean - dark blue-black, strong multi-directional waves.
+    /// Deep ocean — dark blue-black, broad energetic waves.
     pub fn ocean() -> Self {
         Self {
-            color: Color::BLACK,
-            perceptual_roughness: 0.0,
+            color: Color::srgb(0.005, 0.02, 0.045),
+            perceptual_roughness: 0.09,
             octave_vectors: [
-                Vec4::new(0.080, 0.059, 0.073, -0.062),
-                Vec4::new(0.153, 0.138, -0.149, -0.195),
+                Vec4::new(0.040, 0.026, -0.033, 0.022),
+                Vec4::new(0.020, -0.016, 0.014, -0.010),
             ],
-            octave_scales: Vec4::new(1.0, 2.1, 7.9, 14.9) * 5.0,
-            octave_strengths: Vec4::new(0.16, 0.18, 0.093, 0.044),
+            octave_scales: Vec4::new(0.8, 1.6, 3.8, 8.0) * 4.8,
+            octave_strengths: Vec4::new(0.14, 0.10, 0.05, 0.018),
+        }
+    }
+
+    /// Calm pond — dark green, very gentle ripples.
+    pub fn pond() -> Self {
+        Self {
+            color: Color::srgb(0.02, 0.07, 0.055),
+            perceptual_roughness: 0.14,
+            octave_vectors: [
+                Vec4::new(0.024, 0.014, -0.018, 0.007),
+                Vec4::new(0.014, -0.018, 0.012, 0.005),
+            ],
+            octave_scales: Vec4::new(2.5, 5.5, 11.0, 20.0),
+            octave_strengths: Vec4::new(0.045, 0.025, 0.012, 0.005),
+        }
+    }
+
+    /// River — cool blue, medium directional current with cross-ripples.
+    pub fn river() -> Self {
+        Self {
+            color: Color::srgb(0.03, 0.08, 0.14),
+            perceptual_roughness: 0.08,
+            octave_vectors: [
+                Vec4::new(0.060, 0.010, -0.045, 0.015),
+                Vec4::new(0.030, -0.008, 0.020, 0.005),
+            ],
+            octave_scales: Vec4::new(1.8, 3.8, 7.5, 15.0),
+            octave_strengths: Vec4::new(0.13, 0.09, 0.05, 0.02),
+        }
+    }
+
+    /// Swimming pool — clean blue, very calm tight ripples.
+    pub fn pool() -> Self {
+        Self {
+            color: Color::srgb(0.07, 0.20, 0.34),
+            perceptual_roughness: 0.01,
+            octave_vectors: [
+                Vec4::new(0.026, 0.018, -0.018, 0.009),
+                Vec4::new(0.018, -0.018, 0.009, 0.009),
+            ],
+            octave_scales: Vec4::new(4.0, 8.0, 16.0, 28.0),
+            octave_strengths: Vec4::new(0.030, 0.018, 0.010, 0.004),
+        }
+    }
+
+    /// Tropical sea — bright turquoise, lively medium waves.
+    pub fn tropical() -> Self {
+        Self {
+            color: Color::srgb(0.00, 0.16, 0.18),
+            perceptual_roughness: 0.03,
+            octave_vectors: [
+                Vec4::new(0.030, 0.022, -0.025, 0.018),
+                Vec4::new(0.020, -0.028, 0.018, 0.012),
+            ],
+            octave_scales: Vec4::new(1.0, 2.2, 4.8, 9.5) * 4.5,
+            octave_strengths: Vec4::new(0.11, 0.075, 0.04, 0.016),
+        }
+    }
+
+    /// Calm lake — deep blue, subtle wide ripples.
+    pub fn lake() -> Self {
+        Self {
+            color: Color::srgb(0.02, 0.09, 0.16),
+            perceptual_roughness: 0.07,
+            octave_vectors: [
+                Vec4::new(0.018, 0.011, -0.013, 0.006),
+                Vec4::new(0.011, -0.014, 0.010, 0.005),
+            ],
+            octave_scales: Vec4::new(2.0, 4.5, 9.0, 18.0),
+            octave_strengths: Vec4::new(0.060, 0.035, 0.018, 0.007),
+        }
+    }
+
+    /// Natural rock pool — almost still, faint fine detail.
+    pub fn natural_pool() -> Self {
+        Self {
+            color: Color::srgb(0.025, 0.09, 0.08),
+            perceptual_roughness: 0.10,
+            octave_vectors: [
+                Vec4::new(0.012, 0.008, -0.008, 0.004),
+                Vec4::new(0.008, -0.012, 0.006, 0.004),
+            ],
+            octave_scales: Vec4::new(5.0, 10.0, 20.0, 36.0),
+            octave_strengths: Vec4::new(0.020, 0.012, 0.006, 0.0025),
+        }
+    }
+
+    /// Swamp / marsh — dark murky green, soft sluggish disturbance.
+    pub fn swamp() -> Self {
+        Self {
+            color: Color::srgb(0.03, 0.045, 0.02),
+            perceptual_roughness: 0.32,
+            octave_vectors: [
+                Vec4::new(0.010, 0.014, -0.012, 0.007),
+                Vec4::new(0.007, -0.010, 0.009, -0.004),
+            ],
+            octave_scales: Vec4::new(1.2, 2.4, 4.8, 9.6) * 2.2,
+            octave_strengths: Vec4::new(0.075, 0.050, 0.026, 0.010),
+        }
+    }
+
+    /// Arctic water — cold dark blue, sharper choppy surface.
+    pub fn arctic() -> Self {
+        Self {
+            color: Color::srgb(0.01, 0.03, 0.07),
+            perceptual_roughness: 0.12,
+            octave_vectors: [
+                Vec4::new(0.040, 0.030, -0.035, 0.026),
+                Vec4::new(0.055, -0.045, 0.050, 0.032),
+            ],
+            octave_scales: Vec4::new(0.9, 2.0, 4.5, 9.0) * 4.8,
+            octave_strengths: Vec4::new(0.16, 0.11, 0.06, 0.022),
         }
     }
 }
