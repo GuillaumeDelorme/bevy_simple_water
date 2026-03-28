@@ -1,5 +1,10 @@
 # Bevy Simple Water
 
+[![License](https://img.shields.io/badge/license-MIT%2FApache-blue.svg)](https://github.com/GuillaumeDelorme/bevy_simple_water#license)
+[![Crates.io](https://img.shields.io/crates/v/bevy_simple_water.svg)](https://crates.io/crates/bevy_simple_water)
+[![Downloads](https://img.shields.io/crates/d/bevy_simple_water.svg)](https://crates.io/crates/bevy_simple_water)
+[![Docs](https://docs.rs/bevy_simple_water/badge.svg)](https://docs.rs/bevy_simple_water/latest/bevy_simple_water/)
+
 `bevy_simple_water` is a small Bevy plugin for adding animated water material to a mesh.
 
 ![Preview of the water shader](preview.webp)
