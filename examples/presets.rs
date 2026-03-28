@@ -29,14 +29,14 @@ type PresetEntry = (&'static str, fn() -> Water);
 
 const PRESETS: &[PresetEntry] = &[
     ("Ocean", Water::ocean),
-    ("Tropical", Water::tropical),
-    ("Lake", Water::lake),
-    ("River", Water::river),
-    ("Pond", Water::pond),
     ("Pool", Water::pool),
-    ("Natural Pool", Water::natural_pool),
     ("Swamp", Water::swamp),
+    ("Tropical", Water::tropical),
+    ("Pond", Water::pond),
     ("Arctic", Water::arctic),
+    ("Lake", Water::lake),
+    ("Natural Pool", Water::natural_pool),
+    ("River", Water::river),
 ];
 
 const TILE_SIZE: f32 = 12.0;
@@ -106,7 +106,7 @@ fn setup(
     commands.spawn((
         Mesh3d(ground_mesh),
         MeshMaterial3d(materials.add(StandardMaterial {
-            base_color: Color::srgb(0.78, 0.75, 0.70),
+            base_color: Color::srgb(0.25, 0.23, 0.20),
             perceptual_roughness: 1.0,
             ..default()
         })),
@@ -134,8 +134,8 @@ fn setup(
     // Camera tuned for this scene scale.
     commands.spawn((
         Camera3d::default(),
-        Transform::from_xyz(center.x, 10.0, center.z + 20.0)
-            .looking_at(center + Vec3::Y * 0.2, Vec3::Y),
+        Transform::from_xyz(center.x, 7.0, center.z + 22.0)
+            .looking_at(center + Vec3::Y * 0.1, Vec3::Y),
         FreeCamera {
             sensitivity: 0.15,
             friction: 20.0,
