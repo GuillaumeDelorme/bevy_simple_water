@@ -32,3 +32,7 @@ path = "examples/basic.rs"
 [[example]]
 name = "presets"
 path = "examples/presets.rs"
+
+[[example]]
+name = "realtime_settings"
+path = "examples/realtime_settings.rs"
