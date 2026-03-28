@@ -1,7 +1,30 @@
 [package]
 name = "bevy_simple_water"
+description = "A simple Bevy plugin for easily creating and applying water shader materials to 3D meshes."
 version = "0.1.0"
 edition = "2024"
 authors = ["Guillaume Delorme <guillaume@delorme.dev>"]
+license = "MIT OR Apache-2.0"
+keywords = ["bevy", "water", "shader", "gamedev", "rendering"]
+repository = "https://github.com/GuillaumeDelorme/bevy_simple_water"
+readme = "README.md"
 
 [dependencies]
+bevy_app = "0.18"
+bevy_asset = "0.18"
+bevy_color = "0.18"
+bevy_ecs = "0.18"
+bevy_image = "0.18"
+bevy_math = "0.18"
+bevy_pbr = "0.18"
+bevy_reflect = "0.18"
+bevy_render = "0.18"
+bevy_shader = "0.18"
+bevy_utils = "0.18"
+
+[dev-dependencies]
+bevy = "0.18"
+
+[[example]]
+name = "basic"
+path = "examples/basic.rs"
