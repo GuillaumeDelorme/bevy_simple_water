@@ -134,6 +134,7 @@ The `realtime_settings` example mutates `Water` every frame to show that color a
 
 | bevy | bevy_simple_water |
 |------|-------------------|
+| 0.19 | 0.2               |
 | 0.18 | 0.1               |
 
 ## Credit

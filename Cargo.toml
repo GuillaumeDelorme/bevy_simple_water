@@ -1,7 +1,7 @@
 [package]
 name = "bevy_simple_water"
 description = "A simple Bevy plugin for easily creating and applying water shader materials to 3D meshes."
-version = "0.1.0"
+version = "0.2.0"
 edition = "2024"
 authors = ["Guillaume Delorme <guillaume@delorme.dev>"]
 license = "MIT OR Apache-2.0"
@@ -10,20 +10,22 @@ repository = "https://github.com/GuillaumeDelorme/bevy_simple_water"
 readme = "README.md"
 
 [dependencies]
-bevy_app = "0.18"
-bevy_asset = "0.18"
-bevy_color = "0.18"
-bevy_ecs = "0.18"
-bevy_image = "0.18"
-bevy_math = "0.18"
-bevy_pbr = "0.18"
-bevy_reflect = "0.18"
-bevy_render = "0.18"
-bevy_shader = "0.18"
-bevy_utils = "0.18"
+bevy_app = "0.19"
+bevy_asset = "0.19"
+bevy_camera = "0.19"
+bevy_color = "0.19"
+bevy_ecs = "0.19"
+bevy_image = "0.19"
+bevy_light = "0.19"
+bevy_math = "0.19"
+bevy_pbr = "0.19"
+bevy_reflect = "0.19"
+bevy_render = "0.19"
+bevy_shader = "0.19"
+bevy_utils = "0.19"
 
 [dev-dependencies]
-bevy = { version = "0.18", features = ["free_camera"] }
+bevy = { version = "0.19", features = ["free_camera"] }
 
 [[example]]
 name = "basic"

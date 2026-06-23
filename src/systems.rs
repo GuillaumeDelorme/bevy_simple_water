@@ -26,7 +26,7 @@ pub(crate) fn apply_water_settings(
 
     // Existing entities - update material in place
     for (_entity, water, material_handle) in &changed {
-        if let Some(material) = water_materials.get_mut(material_handle.0.id()) {
+        if let Some(mut material) = water_materials.get_mut(material_handle.0.id()) {
             material.base.base_color = water.color;
             material.base.perceptual_roughness = water.perceptual_roughness;
             material.extension.settings = WaterShaderSettings {
