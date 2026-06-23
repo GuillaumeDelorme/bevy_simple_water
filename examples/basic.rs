@@ -12,8 +12,9 @@ use bevy::{
     post_process::bloom::Bloom,
     prelude::*,
 };
-use bevy_pbr::{Atmosphere, AtmosphereSettings, ScatteringMedium, ScreenSpaceReflections};
-use bevy_render::view::Hdr;
+use bevy_camera::Hdr;
+use bevy_light::{Atmosphere, atmosphere::ScatteringMedium};
+use bevy_pbr::{AtmosphereSettings, ScreenSpaceReflections};
 use bevy_simple_water::{SimpleWaterPlugin, Water};
 
 fn main() {
@@ -40,18 +41,22 @@ fn setup(
     commands.spawn((
         DirectionalLight {
             illuminance: lux::RAW_SUNLIGHT,
-            shadows_enabled: true,
+            shadow_maps_enabled: true,
             ..default()
         },
         SunDisk::EARTH,
         Transform::from_xyz(1.0, 0.4, 0.0).looking_at(Vec3::ZERO, Vec3::Y),
     ));
 
+    // World atmosphere
+    commands.spawn(Atmosphere::earth(
+        scattering_mediums.add(ScatteringMedium::earth(256, 256)),
+    ));
+
     // Camera
     commands.spawn((
         Camera3d::default(),
         Transform::from_xyz(-8.0, 6.0, 0.0).looking_at(Vec3::Y * 1.8, Vec3::Y),
-        Atmosphere::earthlike(scattering_mediums.add(ScatteringMedium::default())),
         AtmosphereSettings::default(),
         AtmosphereEnvironmentMapLight::default(),
         Exposure { ev100: 13.0 },

@@ -2,7 +2,7 @@ use bevy_asset::AssetServer;
 use bevy_color::Color;
 use bevy_ecs::component::Component;
 use bevy_image::{
-    Image, ImageAddressMode, ImageFilterMode, ImageLoaderSettings, ImageSampler,
+    ImageAddressMode, ImageFilterMode, ImageLoaderSettings, ImageSampler,
     ImageSamplerDescriptor,
 };
 use bevy_math::Vec4;
@@ -81,9 +81,9 @@ impl Water {
                 ..Default::default()
             },
             extension: WaterExtension {
-                normals: asset_server.load_with_settings::<Image, ImageLoaderSettings>(
-                    "embedded://bevy_simple_water/shader/water_normals.png",
-                    |settings| {
+                normals: asset_server
+                    .load_builder()
+                    .with_settings(|settings: &mut ImageLoaderSettings| {
                         settings.is_srgb = false;
                         settings.sampler = ImageSampler::Descriptor(ImageSamplerDescriptor {
                             address_mode_u: ImageAddressMode::Repeat,
@@ -92,8 +92,8 @@ impl Water {
                             min_filter: ImageFilterMode::Linear,
                             ..default()
                         });
-                    },
-                ),
+                    })
+                    .load("embedded://bevy_simple_water/shader/water_normals.png"),
                 settings: WaterShaderSettings {
                     octave_vectors: self.octave_vectors,
                     octave_scales: self.octave_scales,

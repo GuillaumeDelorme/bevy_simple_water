@@ -20,8 +20,9 @@ use bevy::{
     time::{Real, Time},
     window::{CursorGrabMode, CursorOptions, Window},
 };
-use bevy_pbr::{Atmosphere, AtmosphereSettings, ScatteringMedium, ScreenSpaceReflections};
-use bevy_render::view::Hdr;
+use bevy_camera::Hdr;
+use bevy_light::{Atmosphere, atmosphere::ScatteringMedium};
+use bevy_pbr::{AtmosphereSettings, ScreenSpaceReflections};
 use bevy_simple_water::{SimpleWaterPlugin, Water};
 use std::f32::consts::PI;
 
@@ -88,7 +89,7 @@ fn setup(
         commands.spawn((
             Text::new((*name).to_string()),
             TextFont {
-                font_size: 16.0,
+                font_size: FontSize::Px(16.0),
                 ..default()
             },
             TextColor(Color::WHITE),
@@ -117,7 +118,7 @@ fn setup(
     commands.spawn((
         DirectionalLight {
             illuminance: lux::RAW_SUNLIGHT,
-            shadows_enabled: true,
+            shadow_maps_enabled: true,
             ..default()
         },
         SunDisk::EARTH,
@@ -130,6 +131,11 @@ fn setup(
         0.0,
         (rows - 1) as f32 * step / 2.0,
     );
+
+    // World atmosphere
+    commands.spawn(Atmosphere::earth(
+        scattering_mediums.add(ScatteringMedium::earth(256, 256)),
+    ));
 
     // Camera tuned for this scene scale.
     commands.spawn((
@@ -145,7 +151,6 @@ fn setup(
             ..default()
         },
         MainCamera,
-        Atmosphere::earthlike(scattering_mediums.add(ScatteringMedium::default())),
         AtmosphereSettings::default(),
         AtmosphereEnvironmentMapLight::default(),
         Exposure { ev100: 13.0 },
@@ -214,7 +219,7 @@ fn spawn_controls_ui(mut commands: Commands) {
                         row.spawn((
                             Text::new(key.to_string()),
                             TextFont {
-                                font_size: 13.0,
+                                font_size: FontSize::Px(13.0),
                                 ..default()
                             },
                             TextColor(Color::srgb(0.9, 0.8, 0.4)),
@@ -222,7 +227,7 @@ fn spawn_controls_ui(mut commands: Commands) {
                         row.spawn((
                             Text::new(action.to_string()),
                             TextFont {
-                                font_size: 13.0,
+                                font_size: FontSize::Px(13.0),
                                 ..default()
                             },
                             TextColor(Color::srgba(1.0, 1.0, 1.0, 0.8)),
