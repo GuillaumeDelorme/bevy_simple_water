@@ -25,7 +25,7 @@ DepthPrepass,
 MotionVectorPrepass,
 ```
 
-Screen-space reflections are optional, but they help if you want stronger reflections. The `basic` example shows a full scene setup.
+Screen-space reflections are optional (`ScreenSpaceReflections` on the camera), but they help if you want stronger reflections. The `basic` example shows a full scene setup.
 
 ## Basic use
 
