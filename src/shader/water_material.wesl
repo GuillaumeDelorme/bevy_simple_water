@@ -6,12 +6,12 @@
 // This shader is adapted from the SSR example in the Bevy repository:
 // https://github.com/bevyengine/bevy/blob/v0.18.1/assets/shaders/water_material.wgsl
 
-#import bevy_pbr::{
-    pbr_deferred_functions::deferred_output,
-    pbr_fragment::pbr_input_from_standard_material,
-    prepass_io::{VertexOutput, FragmentOutput},
-}
-#import bevy_render::globals::Globals
+import bevy_pbr::{
+    deferred::functions::deferred_output,
+    render::pbr_fragment::pbr_input_from_standard_material,
+    prepass::io::{VertexOutput, FragmentOutput},
+};
+import bevy_render::globals::Globals;
 
 // Parameters to the water shader.
 struct WaterSettings {
@@ -26,9 +26,9 @@ struct WaterSettings {
 
 @group(0) @binding(1) var<uniform> globals: Globals;
 
-@group(#{MATERIAL_BIND_GROUP}) @binding(100) var water_normals_texture: texture_2d<f32>;
-@group(#{MATERIAL_BIND_GROUP}) @binding(101) var water_normals_sampler: sampler;
-@group(#{MATERIAL_BIND_GROUP}) @binding(102) var<uniform> water_settings: WaterSettings;
+@group(constants::MATERIAL_BIND_GROUP) @binding(100) var water_normals_texture: texture_2d<f32>;
+@group(constants::MATERIAL_BIND_GROUP) @binding(101) var water_normals_sampler: sampler;
+@group(constants::MATERIAL_BIND_GROUP) @binding(102) var<uniform> water_settings: WaterSettings;
 
 // Tuned for meter-scale scenes. With the built-in presets, one base tile across
 // 48 meters keeps the dominant wavelengths in a believable range on the 12m
