@@ -25,7 +25,7 @@ pub(crate) struct WaterExtension {
 
 impl MaterialExtension for WaterExtension {
     fn deferred_fragment_shader() -> ShaderRef {
-        "embedded://bevy_simple_water/shader/water_material.wgsl".into()
+        "embedded://bevy_simple_water/shader/water_material.wesl".into()
     }
 }
 

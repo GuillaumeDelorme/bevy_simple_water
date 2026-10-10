@@ -3,14 +3,12 @@
 use bevy::{
     anti_alias::fxaa::Fxaa,
     camera::Exposure,
-    core_pipeline::{
-        prepass::{DeferredPrepass, DepthPrepass, MotionVectorPrepass},
-        tonemapping::Tonemapping,
-    },
+    core_pipeline::prepass::{DeferredPrepass, DepthPrepass, MotionVectorPrepass},
     light::{AtmosphereEnvironmentMapLight, SunDisk, light_consts::lux},
     pbr::DefaultOpaqueRendererMethod,
     post_process::bloom::Bloom,
     prelude::*,
+    render::view::Tonemapping,
 };
 use bevy_camera::Hdr;
 use bevy_light::{Atmosphere, atmosphere::ScatteringMedium};

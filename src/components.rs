@@ -2,8 +2,7 @@ use bevy_asset::AssetServer;
 use bevy_color::Color;
 use bevy_ecs::component::Component;
 use bevy_image::{
-    ImageAddressMode, ImageFilterMode, ImageLoaderSettings, ImageSampler,
-    ImageSamplerDescriptor,
+    ImageAddressMode, ImageFilterMode, ImageLoaderSettings, ImageSampler, ImageSamplerDescriptor,
 };
 use bevy_math::Vec4;
 use bevy_pbr::{ExtendedMaterial, StandardMaterial};

@@ -4,19 +4,19 @@ use bevy::{
     anti_alias::fxaa::Fxaa,
     camera::Exposure,
     camera_controller::free_camera::{FreeCamera, FreeCameraState},
-    core_pipeline::{
-        prepass::{DeferredPrepass, DepthPrepass, MotionVectorPrepass},
-        tonemapping::Tonemapping,
-    },
+    core_pipeline::prepass::{DeferredPrepass, DepthPrepass, MotionVectorPrepass},
     input::{
         ButtonInput,
         keyboard::KeyCode,
-        mouse::{AccumulatedMouseMotion, AccumulatedMouseScroll, MouseButton, MouseScrollUnit},
+        mouse::{
+            AccumulatedMouseMotion, AccumulatedMouseScroll, MouseButton, MouseScrollPixelsPerLine,
+        },
     },
     light::{AtmosphereEnvironmentMapLight, SunDisk, light_consts::lux},
     pbr::DefaultOpaqueRendererMethod,
     post_process::bloom::Bloom,
     prelude::*,
+    render::view::Tonemapping,
     time::{Real, Time},
     window::{CursorGrabMode, CursorOptions, Window},
 };
@@ -242,6 +242,7 @@ fn run_free_camera_controller(
     mut windows: Query<(&Window, &mut CursorOptions)>,
     accumulated_mouse_motion: Res<AccumulatedMouseMotion>,
     accumulated_mouse_scroll: Res<AccumulatedMouseScroll>,
+    mouse_scroll_conversion: Res<MouseScrollPixelsPerLine>,
     mouse_button_input: Res<ButtonInput<MouseButton>>,
     key_input: Res<ButtonInput<KeyCode>>,
     mut toggle_cursor_grab: Local<bool>,
@@ -275,12 +276,10 @@ fn run_free_camera_controller(
         return;
     }
 
-    let amount = match accumulated_mouse_scroll.unit {
-        MouseScrollUnit::Line => accumulated_mouse_scroll.delta.y,
-        MouseScrollUnit::Pixel => {
-            accumulated_mouse_scroll.delta.y / MouseScrollUnit::SCROLL_UNIT_CONVERSION_FACTOR
-        }
-    };
+    let amount = accumulated_mouse_scroll
+        .to_lines(&mouse_scroll_conversion)
+        .delta
+        .y;
     state.speed_multiplier =
         (state.speed_multiplier + amount * config.scroll_factor).clamp(0.0, f32::MAX);
 
